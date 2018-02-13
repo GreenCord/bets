@@ -16,4 +16,5 @@ module.exports = function(sequelize, DataTypes) {
         bet_answer_3: DataTypes.STRING,
         winning_user_id: DataTypes.INTEGER
     });
+    return Ballot;
 };
