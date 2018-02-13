@@ -23,6 +23,9 @@ app.set('view engine', 'handlebars');
 
 // Routes/Controllers
 require('./controllers/html-controller.js')(app);
+require('./controllers/users-controller.js')(app);
+require('./controllers/ballots-controller.js')(app);
+require('./controllers/bets-controller.js')(app);
 
 // Initialize app
 db.sequelize.sync().then(function(){
