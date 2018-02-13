@@ -14,4 +14,5 @@ module.exports = function(sequelize, DataTypes) {
 
         total_right: DataTypes.INTEGER
     });
+    return Bet;
 };

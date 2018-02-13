@@ -6,4 +6,5 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: false
         }
     });
+    return User;
 };
