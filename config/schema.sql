@@ -12,7 +12,7 @@ CREATE TABLE users (
 CREATE TABLE ballot (
 	/* ballot refers to a collection of possible bet options */
 	id int unique not null auto_increment,
-    name varchar(255) not null,
+    name varchar(255) not null unique,
     expired boolean,
     expire_dt datetime,
     
