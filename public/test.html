@@ -1,9 +1,171 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Test</title>
+  <title>BetParty</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://use.fontawesome.com/f12d97369d.js"></script>
+
+<!-- CSS -->
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Condensed:400,700,900" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
+
+<!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="./assets/jquery/dist/jquery.js" type="text/javascript"></script>
+<script src="./assets/blueimp-file-upload/js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="./assets/blueimp-file-upload/js/jquery.iframe-transport.js" type="text/javascript"></script>
+<script src="./assets/blueimp-file-upload/js/jquery.fileupload.js" type="text/javascript"></script>
+<script src="./assets/cloudinary-jquery-file-upload/cloudinary-jquery-file-upload.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js" type="text/javascript"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+
+          
 </head>
 <body>
-<h1>This is a test.</h1>
-</body>
+   <nav class="blue-grey darken-2" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">BetParty</a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot blue-grey lighten-5 z-depth-1" id="authsection">
+    <div class="row">
+
+      <div class="col s6 m4">
+        <a id="email-login" href="#emailmodal" class="waves-effect waves-light btn modal-trigger">Login</a>
+        <div class="authuser"></div>
+      </div>
+
+      <div class="col s6 m4">
+        <div id="usermsg" class="center light-green lighten-2">Let's gamble irresponsibly</div>
+      </div>
+
+      <div class="col s12 m4 right-align">
+        <div id="authlogout">
+          <a href="#mybets" id="mybets-btn" class="waves-effect waves-light btn modal-trigger">My Bets</a>
+          <a id="authlogout-btn" class="waves-effect waves-light btn">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="emailmodal" class="modal">
+    <div class="modal-content">
+      <div class="row">
+        <div class="col s6">
+          <h4>Login</h4>
+          <div class="row">
+            <form  class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="login-email" type="email" class="validate">
+                  <label for="login-email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="login-password" type="password" class="validate">
+                  <label for="login-password">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <button class="btn waves-effect waves-light" type="submit" name="action" id="login-submit">Login<i class="material-icons right">send</i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col s6">
+          <h4>Register</h4>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="register-displayname" type="text" class="validate" data-length="25">
+                  <label for="register-displayname">Username (max 25 characters)</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="register-email" type="email" class="validate">
+                  <label id="label-register-email" for="register-email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="register-password" type="password" class="validate">
+                  <label for="register-password">Password</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <button class="btn waves-effect waves-light" type="submit" name="action" id="register-submit">Register<i class="material-icons right">send</i></button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <h1 class="header center orange-text">BetParty</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">Host group bets with your friends! or dont. we dont care.</h5>
+      </div>
+      <form class="row center">
+        <div class="col s8 offset-s2">
+          
+          <div class="row">
+            
+            <div class="input-field col s12">
+              <input type="text" id="input" data-length="144">
+              <label id="inputlabel" for="input">Type your group name/event here</label>
+            </div>
+
+          </div>
+
+          <div class="row">
+          
+            <div class="section col s12 m6 mainbtns">
+              <button id="bet-button" class="btn-large waves-effect waves-light orange validate">Bet</button>
+            </div>
+          
+            <div class="section col s12 m6 mainbtns">
+              <button id="kitten-button" class="btn-large waves-effect waves-light orange validate">I Don't Want to gamble</button>
+            </div>
+
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- User Bet Modal -->
+  <div id="userbets" class="modal">
+    <div class="section">
+      <div class="row">
+        <div class="col s12">
+          <h3><span class="authuser-name">My</span>My Bets</h3>
+          <div class="row">
+            <div id="userbets-show" class="center"></div>
+          </div>
+          <div class="row">
+            <div id="userbets-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript" src="./assets/practice.js"></script>
+  <script type="text/javascript" src="./assets/logic.js"></script>
+  </body>
 </html>
