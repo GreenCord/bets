@@ -2,8 +2,90 @@
 <html>
 <head>
 	<title>Test</title>
+	<!-- jQuery -->
+	<script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>This is a test.</h1>
+	<h1>This is a test form.</h1>
+	<form>
+		<p>Name</p>
+		<input type="text" name="ballot-name" placeholder="Name of group/event">
+		<!-- BET 1 -->
+		<p>Bet 1</p>
+		<!-- text -->
+		<input type="text" name="bet-1-text" class="bet-text" placeholder="Enter question for first bet">
+		<!-- options -->
+		<ol>
+			<li class="bet-1-option">
+				<input type="text" name="bet-1-opt-1" placeholder="option">
+			</li>
+			<li class="bet-1-option">
+				<input type="text" name="bet-1-opt-2" placeholder="option">
+			</li>
+			<li class="bet-1-option">
+				<input type="text" name="bet-1-opt-3" placeholder="option">
+			</li>
+		</ol>
+		<!-- BET 2 -->
+		<p>Bet 2</p>
+		<!-- text -->
+		<input type="text" name="bet-2-text" class="bet-text" placeholder="Enter question for second bet">
+		<!-- options -->
+		<ol>
+			<li class="bet-2-option">
+				<input type="text" name="bet-2-opt-1" placeholder="option">
+			</li>
+			<li class="bet-2-option">
+				<input type="text" name="bet-2-opt-2" placeholder="option">
+			</li>
+			<li class="bet-2-option">
+				<input type="text" name="bet-2-opt-3" placeholder="option">
+			</li>
+		</ol>
+		<!-- BET 3 -->
+		<p>Bet 3</p>
+		<!-- text -->
+		<input type="text" name="bet-3-text" class="bet-text" placeholder="Enter question for third bet">
+		<!-- options -->
+		<ol>
+			<li class="bet-3-option">
+				<input type="text" name="bet-3-opt-1" placeholder="option">
+			</li>
+			<li class="bet-3-option">
+				<input type="text" name="bet-3-opt-2" placeholder="option">
+			</li>
+			<li class="bet-3-option">
+				<input type="text" name="bet-3-opt-3" placeholder="option">
+			</li>
+		</ol>
+		<input type="submit" value="Submit" id="submit-ballot">
+	</form>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(document).on("click", "#submit-ballot", logData);
+		});
+
+		function logData(event) {
+			event.preventDefault();
+			var dataObj = {};
+			dataObj.name = $("input[name=ballot-name]").val();
+
+			// get question text
+			dataObj.question1 = $("input[name=bet-1-text]").val();
+			dataObj.question2 = $("input[name=bet-2-text]").val();
+			dataObj.question3 = $("input[name=bet-3-text]").val();
+
+			// get question options
+			option1Arr = [$("input[name=bet-1-opt-1").val(), $("input[name=bet-1-opt-2").val(), $("input[name=bet-1-opt-3").val()];
+			option2Arr = [$("input[name=bet-2-opt-1").val(), $("input[name=bet-2-opt-2").val(), $("input[name=bet-2-opt-3").val()];
+			option3Arr = [$("input[name=bet-3-opt-1").val(), $("input[name=bet-3-opt-2").val(), $("input[name=bet-3-opt-3").val()];
+
+			dataObj.option1 = option1Arr;
+			dataObj.option2 = option2Arr;
+			dataObj.option3 = option3Arr;
+			
+			console.log("dataObj", dataObj);
+		}
+	</script>
 </body>
 </html>
