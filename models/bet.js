@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Bet = sequelize.define("Bet", {
-    	user_id: DataTypes.INTEGER,
+        user_id: DataTypes.INTEGER,
         ballot_id: DataTypes.INTEGER,
 
         user_answer_1: DataTypes.STRING,
@@ -13,6 +13,8 @@ module.exports = function(sequelize, DataTypes) {
         answer_truth_3: DataTypes.BOOLEAN,
 
         total_right: DataTypes.INTEGER
+    }, {
+        timestamps: false
     });
     return Bet;
 };
