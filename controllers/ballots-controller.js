@@ -8,11 +8,11 @@ var db = require('../models');
 
 // Routes
 module.exports = function(app) {
-	app.get('/api/ballots',(req,res)=>db.Ballot.findAll({}).then(dbBallot=>res.json(dbBallot)));
+    app.get('/api/ballots', (req, res) => db.Ballot.findAll({}).then(dbBallot => res.json(dbBallot)));
 
-	app.post('/api/ballots', function(req, res) {
-		db.Ballot.create({
-			name: req.body.name,
+    app.post('/api/ballots', function(req, res) {
+        db.Ballot.create({
+            name: req.body.name,
             expired: req.body.expired,
             expire_dt: req.body.expire_dt,
 
@@ -30,8 +30,21 @@ module.exports = function(app) {
 
             winning_user_id: req.body.winning_user_id,
             total_right: req.body.total_right
-		}).then(function(dbBallot) {
-			res.json(dbBallot);
-		});
-	});
+        }).then(function(dbBallot) {
+            res.json(dbBallot);
+        });
+    });
+
+    // PUT route to update ballots
+    app.put('/api/ballots', function(req, res) {
+        db.Ballot.update(
+            req.body, {
+                where: {
+                    id: req.body.id
+                }
+            }
+        ).then(function(dbBallot) {
+            res.json(dbBallot);
+        });
+    });
 };
