@@ -8,7 +8,12 @@ var db = require('../models');
 
 // Routes
 module.exports = function(app) {
+    // GET route to return all bets
     app.get('/api/bets', (req, res) => db.Bet.findAll({}).then(dbBet => res.json(dbBet)));
+
+    // GET rout to search for bets
+    // Example: search for user 1's bets is /api/bets/search/?user_id=1
+    app.get('/api/bets/search', (req, res) => db.Bet.findAll({where: req.query}).then(dbBet => res.json(dbBet)));
 
     app.post('/api/bets', function(req, res) {
         db.Bet.create({
