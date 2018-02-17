@@ -11,6 +11,10 @@ module.exports = function(app) {
     // GET route to get all users
     app.get('/api/users', (req, res) => db.User.findAll({}).then(dbUser => res.json(dbUser)));
 
+    // GET route to search for users
+    // Example: To search for admin users /api/users/search/?admin=true
+    app.get('/api/users/search', (req, res) => db.User.findAll(req.query).then(dbUser => res.json(dbUser)));
+
     // POST route to create a new user
     app.post("/api/users", function(req, res) {
         db.User.create({

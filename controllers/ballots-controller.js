@@ -8,7 +8,12 @@ var db = require('../models');
 
 // Routes
 module.exports = function(app) {
+    // GET route to return all ballots
     app.get('/api/ballots', (req, res) => db.Ballot.findAll({}).then(dbBallot => res.json(dbBallot)));
+
+    // GET route to search for ballots
+    // Example, to get non-expired ballots go to /api/ballots/search/?expired=false
+    app.get('/api/ballots/search', (req, res) => db.Ballot.findAll({where: req.query}).then(dbBallot => res.json(dbBallot)));
 
     app.post('/api/ballots', function(req, res) {
         db.Ballot.create({
