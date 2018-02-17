@@ -1,6 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     var Ballot = sequelize.define("Ballot", {
-        name: DataTypes.STRING,
+        // name: DataTypes.STRING,
+        name: {
+            type: DataTypes.STRING,
+            validate: {
+                len: [1, 140]
+            }
+        },
         expired: DataTypes.BOOLEAN,
         expire_dt: DataTypes.DATE,
 
