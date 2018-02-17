@@ -27,4 +27,15 @@ module.exports = function(app) {
             res.json(dbBet);
         });
     });
+
+    app.put("/api/bets", function(req, res) {
+        db.Bet.update(
+            req.body, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function(dbBet) {
+            res.json(dbBet);
+        });
+    });
 };
