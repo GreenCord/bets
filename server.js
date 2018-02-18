@@ -15,7 +15,7 @@ var db = require('./models');
 app.use(express.static('public'));
 
 // Setup body parser
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 //Initialize passport and session persistence
