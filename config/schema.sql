@@ -4,7 +4,7 @@ USE bets_db;
 
 CREATE TABLE users (
 	id int unique not null auto_increment,
-    user_name varchar(255) unique not null,
+    username varchar(255) unique not null,
     /* set admin to true if the user should have admin access*/
     admin boolean default false
 );
