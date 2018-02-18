@@ -1,0 +1,81 @@
+<nav class="blue-grey darken-2" role="navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="#" class="brand-logo">BetParty</a>
+  </div>
+</nav>
+
+<div class="section no-pad-bot blue-grey lighten-5 z-depth-1" id="authsection">
+  <div class="row">
+
+    <div class="col s6 m4">
+      Welcome.
+    </div>
+
+    <div class="col s6 m4">
+      <div id="usermsg" class="center light-green lighten-2">Let's gamble irresponsibly</div>
+    </div>
+
+    <div class="col s12 m4 right-align">
+      <div id="authlogout">
+        <!-- <a href="#mybets" id="mybets-btn" class="waves-effect waves-light btn modal-trigger">My Bets</a>
+        <a id="authlogout-btn" class="waves-effect waves-light btn">Logout</a> -->
+        
+        {{#if user}}
+          {{> auth/userauthenticated-block}}
+        {{else}}
+          {{> auth/usernotauthenticated-block}}
+        {{/if}}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h1 class="header center orange-text">BetParty</h1>
+    <div class="row center">
+      <h5 class="header col s12 light">Host group bets with your friends! or dont. we dont care.</h5>
+    </div>
+    <form class="row center">
+      <div class="col s8 offset-s2">
+        <div class="row">
+          <div class="input-field col s12">
+            <input type="text" id="input" data-length="144">
+            <label id="inputlabel" for="input">Type your group name/event here</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="section col s12 m6 mainbtns">
+            <button id="bet-button" class="btn-large waves-effect waves-light orange validate">Bet</button>
+          </div>
+
+          <div class="section col s12 m6 mainbtns">
+            <button id="kitten-button" class="btn-large waves-effect waves-light orange validate">I Don't Want to gamble</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- User Bet Modal -->
+<div id="userbets" class="modal">
+  <div class="section">
+    <div class="row">
+      <div class="col s12">
+        <h3><span class="authuser-name">My</span>My Bets</h3>
+        <div class="row">
+          <div id="userbets-show" class="center"></div>
+        </div>
+        <div class="row">
+          <div id="userbets-grid"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="./js/clientside.js"></script>
+
