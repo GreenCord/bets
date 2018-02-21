@@ -3,13 +3,13 @@ module.exports = function(sequelize, DataTypes) {
         user_id: DataTypes.INTEGER,
         ballot_id: DataTypes.INTEGER,
 
-        user_answer_1: DataTypes.STRING,
+        user_answer_1: DataTypes.BOOLEAN,
         answer_truth_1: DataTypes.BOOLEAN,
 
-        user_answer_2: DataTypes.STRING,
+        user_answer_2: DataTypes.BOOLEAN,
         answer_truth_2: DataTypes.BOOLEAN,
 
-        user_answer_3: DataTypes.STRING,
+        user_answer_3: DataTypes.BOOLEAN,
         answer_truth_3: DataTypes.BOOLEAN,
 
         total_right: DataTypes.INTEGER
