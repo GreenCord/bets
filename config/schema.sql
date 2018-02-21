@@ -18,16 +18,16 @@ CREATE TABLE ballot (
     
     /* Setup for 3 different bet options */
     bet_text_1 varchar(255),
-    bet_options_1 varchar(255),
-    bet_answer_1 varchar(255),
+    /* bet_options_1 varchar(255), */
+    bet_answer_1 boolean,
     
     bet_text_2 varchar(255),
-    bet_options_2 varchar(255),
-    bet_answer_2 varchar(255),
+    /* bet_options_2 varchar(255), */
+    bet_answer_2 boolean,
     
     bet_text_3 varchar(255),
-    bet_options_3 varchar(255),
-    bet_answer_3 varchar(255),
+    /* bet_options_3 varchar(255), */
+    bet_answer_3 boolean,
     
     winning_user_id int
 );
@@ -39,13 +39,13 @@ CREATE TABLE bets (
     ballot_id int not null,
     
     /* setup for 3 bet options. user_answer_1 should correspond to ballot.bet_text_1 */
-    user_answer_1 varchar(255),
+    user_answer_1 boolean,
     answer_truth_1 boolean,
     
-    user_answer_2 varchar(255),
+    user_answer_2 boolean,
     answer_truth_2 boolean,
     
-    user_answer_3 varchar(255),
+    user_answer_3 boolean,
     answer_truth_3 boolean,
     
     total_right int
