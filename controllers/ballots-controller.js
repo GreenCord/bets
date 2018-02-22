@@ -21,6 +21,21 @@ module.exports = function(app) {
         
     });
 
+    app.get('/ballots/:id',(req,res)=>{
+        db.Ballot.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(dbBallot=>{
+            console.log('Getting single ballot:',dbBallot);
+            var hbsObject = {
+                user: req.user,
+                ballots: dbBallot
+            };
+            res.render('ballots-single',hbsObject);
+        });
+    });
+
     // GET route to return all ballots
     app.get('/api/ballots', (req, res) => db.Ballot.findAll({}).then(dbBallot => res.json(dbBallot)));
 
