@@ -12,6 +12,13 @@
 		flex-direction: column;
 	}
 
+	.main-wrapper {
+		flex: 1 0 auto;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
 	h1, h2, h3, h4, h5, h6, label {
 		color: inherit;
 		font-family: 'Racing Sans One', Constantia, 'Palatino Linotype',Palatino, 'Times New Roman', Times, serif;
@@ -24,8 +31,12 @@
 		font-weight: 700;
 	}
 
-	.burger-icon {
+	.mat-icon {
 		font-size: 72px;
+	}
+
+	.ballot-card:nth-of-type(3n+1) {
+		clear: both;
 	}
 
 	.nomargin {

@@ -1,15 +1,26 @@
   <!-- Main Nav -->
   {{> master/nav-block}}
   
-
+<div class="main-wrapper">
   <!-- Main Header -->
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center red-text text-darken-4">Welcome to BetParty</h1>
-        <div class="row center">
-          <p class="header col s12 light grey-text text-lighten-5">Let's gamble irresponsibly.</p>
+         <div class="card white darken-1">
+          <div class="card-content white-text">
+            <h1 class="header center green-text text-darken-4">Welcome to BetParty</h1>
+            <div class="row center">
+              <p class="header col s12 light grey-text">Let's gamble irresponsibly.</p>
+              <p>
+                {{#if user}}
+                {{> auth/userauthenticated-block}}
+                {{else}}
+                {{> auth/usernotauthenticated-block}}
+                {{/if}}
+              </p>
+            </div>
+          </div>
         </div>
         <br><br>
       </div><!--/.container-->
@@ -23,30 +34,30 @@
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons burger-icon">assignment_returned</i></h2>
-            <h5 class="center">Blah</h5>
-            <p class="light">Blah blah blah</p>
+            <h2 class="center green-text"><i class="material-icons mat-icon">assignment_returned</i></h2>
+            <h5 class="center">Choose a prop bet ballot.</h5>
+            <p class="light">Login and select a ballot to bet on.</p>
           </div>
         </div>
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons burger-icon">restaurant</i></h2>
-            <h5 class="center">Blah</h5>
-            <p class="light">Blah blah blah</p>
-            <form id="ordersForm" action="" method="post">
-              <label for="burgerOrder">Place Your Order:</label>
+            <h2 class="center green-text"><i class="material-icons mat-icon">check_circle</i></h2>
+            <h5 class="center">Place Your Bets</h5>
+            <p class="light">Answer the questions on the ballot.</p>
+            {{!-- <form id="ordersForm" action="" method="post">
+              <label for="burgerOrder">Place</label>
               <input placeholder="What is your order?" id="burgerOrder" type="text" class="validate">
               <button class="btn waves-effect waves-light" type="submit" id="burgerSubmit" name="action">Place Order
                 <i class="material-icons right">chevron_right</i>
               </button>
-            </form>
+            </form> --}}
           </div>
         </div>
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons burger-icon">thumb_up</i></h2>
-            <h5 class="center">Blah</h5>
-            <p class="light">Blah blah blah</p>
+            <h2 class="center green-text"><i class="material-icons mat-icon">monetization_on</i></h2>
+            <h5 class="center">Check to see if you won.</h5>
+            <p class="light">After the ballot expires, check back to see if you've won!</p>
           </div>
         </div>
       </div>
@@ -70,7 +81,7 @@
     </div><!--/.section-->
     <div class="parallax"><img src="./assets/img/phat_stacks_of_cash.jpg" alt="MAKE IT RAIN."></div>
   </div>
-
+</div>
   <!-- Footer -->
   <footer class="page-footer red">
     <div class="container">
