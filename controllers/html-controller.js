@@ -14,6 +14,8 @@ module.exports = function(app) {
 	// app.get('/',(req,res)=>res.sendFile(path.join(__dirname,'../public/betparty.html')));
 	// app.get('/test',(req,res)=>res.sendFile(path.join(__dirname,'../public/test.html')));
 	// app.post('/test/new/:name',(req,res)=>db.Test.create({test_name:req.params.name}).then(dbTest=>res.json('dbTest')));
+	app.get('/cards',(req,res)=>res.sendFile(path.join(__dirname,'../public/cards.html')));
+	app.get('/results',(req,res)=>res.sendFile(path.join(__dirname,'../public/results.html')));
 
 	
 	// Handlebars & authentication routes
@@ -33,6 +35,11 @@ module.exports = function(app) {
 	app.get('/auth/twitter/callback',
 		passport.authenticate('twitter', { failureRedirect: '/login'}),
 		function(req,res){
-			res.redirect('/');
-		});
+			res.redirect('/ballots');
+		}
+	);
+
+
 	};
+
+	

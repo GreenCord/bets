@@ -8,6 +8,19 @@ var db = require('../models');
 
 // Routes
 module.exports = function(app) {
+    // GET route and HTML display of ballots
+    app.get('/ballots',(req,res)=>{
+        db.Ballot.findAll({})
+        .then(dbBallot=>{
+        var hbsObject = {
+            user: req.user,
+            ballots: dbBallot
+        };
+        res.render('ballots',hbsObject);
+        });
+        
+    });
+
     // GET route to return all ballots
     app.get('/api/ballots', (req, res) => db.Ballot.findAll({}).then(dbBallot => res.json(dbBallot)));
 
