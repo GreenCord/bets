@@ -18,15 +18,12 @@ CREATE TABLE ballot (
     
     /* Setup for 3 different bet options */
     bet_text_1 varchar(255),
-    /* bet_options_1 varchar(255), */
     bet_answer_1 boolean,
     
     bet_text_2 varchar(255),
-    /* bet_options_2 varchar(255), */
     bet_answer_2 boolean,
     
     bet_text_3 varchar(255),
-    /* bet_options_3 varchar(255), */
     bet_answer_3 boolean,
     
     winning_user_id int
