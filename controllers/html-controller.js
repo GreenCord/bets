@@ -24,9 +24,7 @@ module.exports = function(app) {
 		res.render('index',hbsObject);
 	});
 
-	app.get('/login', (req,res)=>{
-		res.render('login');
-	});
+	app.get('/login', (req,res)=>res.render('login'));
 
 	// Authentication Routes
 	app.get('/login/twitter',
@@ -37,4 +35,4 @@ module.exports = function(app) {
 		function(req,res){
 			res.redirect('/');
 		});
-};
+	};
