@@ -12,20 +12,8 @@
   </div> --}}
 
   <!-- Main Nav -->
-  <nav class="white" role="navigation">
-    <div class="nav-wrapper">
-      <a class="burger-logo brand-logo center blue-grey-text text-darken-4" href="">BetParty</a>
-        <ul id="nav-mobile" class="right">
-          <li>
-            {{#if user}}
-              {{> auth/userauthenticated-block}}
-            {{else}}
-              {{> auth/usernotauthenticated-block}}
-            {{/if}}
-          </li>
-        </ul>
-    </div>
-  </nav>
+  {{> master/nav-block}}
+  
 
   <!-- Main Header -->
   <div id="index-banner" class="parallax-container">
@@ -39,7 +27,7 @@
         <br><br>
       </div><!--/.container-->
     </div><!--/.section-->
-    <div class="parallax"><img src="./assets/img/phat_stacks_of_cash.jpg" alt="Lots of money!"></div>
+    <div class="parallax"><img src="./assets/img/benjamins.jpg" alt="All about those Benjamins."></div>
   </div>
 
   <!-- Main Section -->
@@ -93,7 +81,7 @@
         </div>
       </div><!--/.container-->
     </div><!--/.section-->
-    <div class="parallax"><img src="assets/img/burger2.jpg" alt="Mmmmmmmm cheesy."></div>
+    <div class="parallax"><img src="./assets/img/phat_stacks_of_cash.jpg" alt="MAKE IT RAIN."></div>
   </div>
 
   <!-- Footer -->
