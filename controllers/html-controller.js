@@ -11,13 +11,13 @@ var passport = require('passport');
 module.exports = function(app) {
 	app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 	// Straight HTML routes
-	app.get('/',(req,res)=>res.sendFile(path.join(__dirname,'../public/betparty.html')));
-	app.get('/test',(req,res)=>res.sendFile(path.join(__dirname,'../public/test.html')));
-	app.post('/test/new/:name',(req,res)=>db.Test.create({test_name:req.params.name}).then(dbTest=>res.json('dbTest')));
+	// app.get('/',(req,res)=>res.sendFile(path.join(__dirname,'../public/betparty.html')));
+	// app.get('/test',(req,res)=>res.sendFile(path.join(__dirname,'../public/test.html')));
+	// app.post('/test/new/:name',(req,res)=>db.Test.create({test_name:req.params.name}).then(dbTest=>res.json('dbTest')));
 
 	
 	// Handlebars & authentication routes
-	app.get('/steve', (req,res)=>{
+	app.get('/', (req,res)=>{
 		var hbsObject = {
 			user: req.user
 		};
@@ -35,6 +35,6 @@ module.exports = function(app) {
 	app.get('/auth/twitter/callback',
 		passport.authenticate('twitter', { failureRedirect: '/login'}),
 		function(req,res){
-			res.redirect('/steve');
+			res.redirect('/');
 		});
 };
