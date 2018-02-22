@@ -1,0 +1,14 @@
+<nav class="white" role="navigation">
+    <div class="nav-wrapper">
+      <a class="burger-logo brand-logo center blue-grey-text text-darken-4" href="">BetParty</a>
+        <ul id="nav-mobile" class="right">
+          <li>
+            {{#if user}}
+              {{> auth/userauthenticated-block}}
+            {{else}}
+              {{> auth/usernotauthenticated-block}}
+            {{/if}}
+          </li>
+        </ul>
+    </div>
+  </nav>
