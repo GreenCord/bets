@@ -2,13 +2,7 @@
   {{> master/nav-block}}
   
 <div class="main-wrapper">
-  <!-- Main Header -->
-  
-  {{!-- {{#if user}}
-  {{> auth/userauthenticated-block}}
-  {{else}}
-  {{> auth/usernotauthenticated-block}}
-  {{/if}} --}}
+
   
 
   <!-- Main Section -->
@@ -17,22 +11,48 @@
 
       <div class="row">
         <div class="col s12">
-          <h2>Select a ballot below.</h2>
+          <h2>Ballot: {{ballots.name}}</h2>
         </div>
       </div>
 
+      {{#if user}}
+      <form name="ballot" id="ballot">
+        <div class="row center">
+          <div class="col s4 ballot-card">
+            <div class="card-panel teal white-text">
+              <div>{{ballots.bet_text_1}}</div>
+            </div>
+          </div>
+          <div class="col s4 ballot-card">
+            <div class="card-panel teal white-text">
+              <div>{{ballots.bet_text_2}}</div>
+            </div>
+          </div>
+          <div class="col s4 ballot-card">
+            <div class="card-panel teal white-text">
+              <div>{{ballots.bet_text_3}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="row center">
+          <div class="col s12">
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="submit-ballot">
+              Submit
+              <i class="material-icons left"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+      {{else}}
       <div class="row">
-        {{#if user}}
-          {{#each ballots}}
-            {{#unless expired}}
-              {{> ballots/ballot-block}}
-            {{/unless}}
-          {{/each}}
-        {{else}}
-          {{> auth/usernotauthenticated-block}}
-        {{/if}}
-
+        <div class="col s12 center">
+          <h3>Sorry, you must be logged in to bet.</h3>
+          <p>{{> auth/usernotauthenticated-block}}<p>
+        </div>
       </div>
+      {{/if}}
+
+  
     </div>
   </div>
 
