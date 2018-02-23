@@ -10,8 +10,28 @@ var db = require('../models');
 module.exports = function(app) {
     // GET route and HTML display of ballots
     app.get('/ballots',(req,res)=>{
-        db.Ballot.findAll({})
+        db.Ballot.findAll({
+            include: [
+                {model: db.Bet}
+            ]
+        })
         .then(dbBallot=>{
+        console.log('##########BEFORE',dbBallot);
+        if(req.user){
+            // console.log('####Debug Current User:',req.user.id);
+            for (var i = 0; i < dbBallot.length; i++) {
+                var isSubmitted = false;
+                for (var j = 0; j < dbBallot[i].dataValues.Bets.length; j++) {
+                    console.log(dbBallot[i].dataValues.Bets[j].dataValues.UserId);
+                    if(req.user.id === dbBallot[i].dataValues.Bets[j].dataValues.UserId) {
+                        isSubmitted = true;
+                    }
+                }
+                dbBallot[i].dataValues.submitted = isSubmitted;
+                dbBallot[i]._previousDataValues.submitted = isSubmitted;
+            }
+        }
+        console.log('##########AFTER',dbBallot);
         var hbsObject = {
             user: req.user,
             ballots: dbBallot

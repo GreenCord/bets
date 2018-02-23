@@ -1,7 +1,14 @@
 <div class="col s4 ballot-card">
 	<div class="card-panel green white-text center">
+		{{!-- {{log "WHAT IS HAPPENING#$$#" this.dataValues.Bets}} --}}
 		<h3>{{name}}</h3>
 		<p>Expires: {{expire_dt}}</p>
+		<p>Expired: {{this.dataValues.submitted}}</p>
+		{{#if this.dataValues.submitted}}
+		<p><a href="/ballots/{{this.id}}" class="disabled btn-large">Submitted</a></p>
+		{{else}}
 		<p><a href="/ballots/{{this.id}}" class="waves-effect waves-light btn-large white green-text">Open Ballot</a></p>
+		{{/if}}
+		
 	</div>
 </div>
