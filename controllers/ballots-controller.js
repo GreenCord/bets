@@ -12,26 +12,30 @@ module.exports = function(app) {
     app.get('/ballots',(req,res)=>{
         db.Ballot.findAll({
             include: [
-                {model: db.Bet}
+                {model: db.Bet},
+                {model: db.User, as: 'Winner'}
             ]
         })
         .then(dbBallot=>{
-        console.log('##########BEFORE',dbBallot);
+        // console.log('##########BEFORE',dbBallot);
         if(req.user){
             // console.log('####Debug Current User:',req.user.id);
             for (var i = 0; i < dbBallot.length; i++) {
                 var isSubmitted = false;
+                var userBetId;
                 for (var j = 0; j < dbBallot[i].dataValues.Bets.length; j++) {
                     console.log(dbBallot[i].dataValues.Bets[j].dataValues.UserId);
                     if(req.user.id === dbBallot[i].dataValues.Bets[j].dataValues.UserId) {
                         isSubmitted = true;
+                        userBetId = dbBallot[i].dataValues.Bets[j].dataValues.id;
                     }
                 }
                 dbBallot[i].dataValues.submitted = isSubmitted;
-                dbBallot[i]._previousDataValues.submitted = isSubmitted;
+                dbBallot[i].dataValues.userBetId = userBetId;
+                // dbBallot[i]._previousDataValues.submitted = isSubmitted;
             }
         }
-        console.log('##########AFTER',dbBallot);
+        // console.log('##########AFTER',dbBallot);
         var hbsObject = {
             user: req.user,
             ballots: dbBallot
@@ -45,7 +49,10 @@ module.exports = function(app) {
         db.Ballot.findOne({
             where: {
                 id: req.params.id
-            }
+            },
+            include: [
+                {model: db.User, as: 'Winner'}
+            ]
         }).then(dbBallot=>{
             console.log('Getting single ballot:',dbBallot);
             var hbsObject = {

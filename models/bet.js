@@ -12,7 +12,7 @@ module.exports = function(sequelize, DataTypes) {
 
         total_right: DataTypes.INTEGER
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     Bet.associate = function(models) {

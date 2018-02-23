@@ -12,12 +12,20 @@ module.exports = function(sequelize, DataTypes) {
             defaultValue: false
         }
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     User.associate = function(models) {
         User.belongsToMany(models.Ballot, {
             through: 'bets'
+        });
+
+        User.hasMany(models.Bet, {
+            onDelete: 'cascade'
+        });
+
+        User.hasMany(models.Ballot, {
+            onDelete: 'cascade'
         });
     };
 

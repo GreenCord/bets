@@ -9,26 +9,26 @@ module.exports = function(passport){
 		callbackURL: 'http://127.0.0.1:3000/auth/twitter/callback'
 	},
 	function(token, tokenSecret, profile, cb){
-		console.log('DB Hooking: ', profile);
+		// console.log('DB Hooking: ', profile);
 
 		db.User.findOne({
 			where: {
 				username: profile.username
 			}
 		}).then(dbUser=>{
-			console.log('DB Hooking finding user:',dbUser);
-			console.log('Looking for:',profile.username);
+			// console.log('DB Hooking finding user:',dbUser);
+			// console.log('Looking for:',profile.username);
 			if (!dbUser) {
 				console.log('User doesn\'t exist, we should add user.');
 				db.User.create({
 					username: profile.username,
 					admin: false
 				}).then(dbNewUser=>{
-					console.log('User added!',dbNewUser);
+					// console.log('User added!',dbNewUser);
 					return cb(null,dbNewUser);
 				});
 			} else {
-				console.log('User found!',dbUser);
+				// console.log('User found!',dbUser);
 				return cb(null,dbUser);
 			}
 			
