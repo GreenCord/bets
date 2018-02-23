@@ -5,7 +5,7 @@
 		<p>Expired: {{expire_dt}}</p>
 		<p>Winner: {{this.Winner.username}}</p>
 		{{#if this.dataValues.submitted}}
-		<p><a href="/ballots/{{this.id}}/{{this.dataValues.userBetId}}" class="waves-effect waves-light btn-large white green-text">View My Ballot</a></p>
+		<p><a href="/ballots/{{this.id}}" class="waves-effect waves-light btn-large white green-text">View This Ballot</a></p>
 		{{else}}
 		<p><a href="/ballots/{{this.id}}" class="waves-effect waves-light btn-large white green-text">View This Ballot</a></p>
 		{{/if}}
