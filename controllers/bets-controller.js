@@ -17,8 +17,7 @@ module.exports = function(app) {
 
     app.post('/api/bets', function(req, res) {
         db.Bet.create({
-            user_id: req.body.user_id,
-            ballot_id: req.body.ballot_id,
+            
             
             user_answer_1: req.body.user_answer_1,
             answer_truth_1: req.body.answer_truth_1,
@@ -28,10 +27,16 @@ module.exports = function(app) {
 
             user_answer_3: req.body.user_answer_3,
             answer_truth_3: req.body.answer_truth_3,
+
+            BallotId: req.body.ballot_id,
+            UserId: req.body.user_id
+            
         }).then(function(dbBet) {
             res.json(dbBet);
         });
     });
+
+
 
     app.put("/api/bets", function(req, res) {
         db.Bet.update(

@@ -1,7 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
     var Bet = sequelize.define("Bet", {
-        user_id: DataTypes.INTEGER,
-        ballot_id: DataTypes.INTEGER,
 
         user_answer_1: DataTypes.BOOLEAN,
         answer_truth_1: DataTypes.BOOLEAN,
@@ -16,5 +14,25 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         timestamps: false
     });
+
+    Bet.associate = function(models) {
+        Bet.belongsTo(models.User, {
+            as: 'Bettor',
+            foreignKey: {
+                name: 'UserId',
+                allowNull: false
+            }
+        });
+
+        Bet.belongsTo(models.Ballot, {
+            as: 'Ballot',
+            foreignKey: {
+                name: 'BallotId',
+                allowNull: false
+            }
+        });
+        
+    };
+
     return Bet;
 };

@@ -14,5 +14,12 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         timestamps: false
     });
+
+    User.associate = function(models) {
+        User.belongsToMany(models.Ballot, {
+            through: 'bets'
+        });
+    };
+
     return User;
 };

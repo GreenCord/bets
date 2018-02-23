@@ -18,9 +18,30 @@ module.exports = function(sequelize, DataTypes) {
         bet_text_3: DataTypes.STRING,
         bet_answer_3: DataTypes.BOOLEAN,
         
-        winning_user_id: DataTypes.INTEGER
     }, {
         timestamps: false
     });
+
+    Ballot.associate = function(models){
+        Ballot.belongsTo(models.User, {
+            as: 'Winner',
+            foreignKey: {
+                name: 'WinnerId',
+                allowNull: true,
+                defaultValue: null
+            }
+        });
+
+        Ballot.hasMany(models.Bet,{
+            onDelete: 'cascade'
+        });
+
+        Ballot.belongsToMany(models.User, {
+            through: 'bets'
+        });
+
+
+    };
+
     return Ballot;
 };
