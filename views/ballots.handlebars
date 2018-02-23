@@ -38,6 +38,32 @@
         {{/if}}
 
     </div>
+
+  <div class="section">
+
+        {{#if user}}
+          <div class="row">
+            <div class="col s12">
+              <h2>Expired Ballots</h2>
+            </div>
+          </div>
+          <div class="row">
+          {{#each ballots}}
+            {{#if expired}}
+              {{> ballots/ballotexpired-block}}
+            {{/if}}
+          {{/each}}
+          </div>
+        {{else}}
+          <div class="row">
+            <div class="col s12 center">
+              <h2>Sorry, you must be logged in to view ballots.</h2>
+              <p>{{> auth/usernotauthenticated-block}}</p>
+            </div>
+          </div>
+        {{/if}}
+
+    </div>
   </div>
 
   <!-- Second Section -->

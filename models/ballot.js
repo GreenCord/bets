@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
         bet_answer_3: DataTypes.BOOLEAN,
         
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     Ballot.associate = function(models){
@@ -39,7 +39,6 @@ module.exports = function(sequelize, DataTypes) {
         Ballot.belongsToMany(models.User, {
             through: 'bets'
         });
-
 
     };
 

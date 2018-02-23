@@ -1,0 +1,13 @@
+<div class="col l4 m6 s12 ballot-card">
+	<div class="card-panel green white-text center">
+		{{!-- {{log "WHAT IS HAPPENING#$$#" this.dataValues.Bets}} --}}
+		<h3>{{name}}</h3>
+		<p>Expired: {{expire_dt}}</p>
+		<p>Winner: {{this.Winner.username}}</p>
+		{{#if this.dataValues.submitted}}
+		<p><a href="/ballots/{{this.id}}/{{this.dataValues.userBetId}}" class="waves-effect waves-light btn-large white green-text">View My Ballot</a></p>
+		{{else}}
+		<p><a href="/ballots/{{this.id}}" class="waves-effect waves-light btn-large white green-text">View This Ballot</a></p>
+		{{/if}}
+	</div>
+</div>
