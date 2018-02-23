@@ -10,11 +10,12 @@
          <div class="card white darken-1">
           <div class="card-content white-text">
             <h1 class="header center green-text text-darken-4">Welcome to BetParty</h1>
-            <div class="row center">
-              <p class="header col s12 light grey-text">Let's gamble irresponsibly.</p>
+            <div class="row center grey-text">
+              <p class="header col s12 light">Let's gamble irresponsibly.</p>
               <p>
                 {{#if user}}
-                {{> auth/userauthenticated-block}}
+                Welcome, {{user.username}}!<br>
+                <a href="/ballots" class="waves-effect waves-light btn">Browse Ballots and Bet!</a>
                 {{else}}
                 {{> auth/usernotauthenticated-block}}
                 {{/if}}
@@ -82,25 +83,6 @@
     <div class="parallax"><img src="/assets/img/phat_stacks_of_cash.jpg" alt="MAKE IT RAIN."></div>
   </div>
 </div>
-  <!-- Footer -->
-  <footer class="page-footer red">
-    <div class="container">
-      <div class="row">
-        <div class="col m9 s12">
-          <h5 class="white-text">About BetParty</h5>
-          <p class="grey-text text-lighten-4">It's awesome.</p>
-        </div>
-        <div class="col m3 s12">
-          <h5 class="white-text">View Code on GitHub</h5>
-          <ul>
-            <li><a class="grey-text text-lighten-4" href="https://github.com/greencord/bets" alt="Link to GitHub repository"><i class="material-icons right">laptop</i> GitHub Repo</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
 
-  </footer>
-
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-  <script src="/assets/app.js"></script>
+{{> master/footer-block}}
+{{> master/scripts-block}}

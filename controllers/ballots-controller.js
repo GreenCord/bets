@@ -36,6 +36,14 @@ module.exports = function(app) {
         });
     });
 
+    app.get('/ballot-submitted',(req,res)=>{
+        var hbsObject = {
+            user: req.user
+        };
+        res.render('ballot-submitted',hbsObject);
+    });
+    
+
     // GET route to return all ballots
     app.get('/api/ballots', (req, res) => db.Ballot.findAll({}).then(dbBallot => res.json(dbBallot)));
 
