@@ -52,10 +52,10 @@ module.exports = function(app) {
             },
             include: [
                 {model: db.User, as: 'Winner'},
-                {model: db.Bet, as: 'SubmittedBet'}
+                {model: db.Bet}
             ]
         }).then(dbBallot=>{
-            console.log('Getting single ballot:',dbBallot);
+            // console.log('Getting single ballot:',dbBallot);
             var hbsObject = {
                 user: req.user,
                 ballots: dbBallot
