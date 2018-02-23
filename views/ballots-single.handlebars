@@ -9,13 +9,14 @@
   <div class="container">
     <div class="section">
 
+      
+
+      {{#if user}}
       <div class="row">
         <div class="col s12">
           <h2>Ballot: {{ballots.name}}</h2>
         </div>
       </div>
-
-      {{#if user}}
       <form name="ballot" id="ballot">
         <div class="row center">
           <div class="col s4 ballot-card">
@@ -46,7 +47,7 @@
       {{else}}
       <div class="row">
         <div class="col s12 center">
-          <h3>Sorry, you must be logged in to bet.</h3>
+          <h2>Sorry, you must be logged in.</h2>
           <p>{{> auth/usernotauthenticated-block}}<p>
         </div>
       </div>

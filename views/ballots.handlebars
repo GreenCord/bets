@@ -15,24 +15,28 @@
   <div class="container">
     <div class="section">
 
-      <div class="row">
-        <div class="col s12">
-          <h2>Select a ballot below.</h2>
-        </div>
-      </div>
-
-      <div class="row">
         {{#if user}}
+          <div class="row">
+            <div class="col s12">
+              <h2>Select a ballot below.</h2>
+            </div>
+          </div>
+          <div class="row">
           {{#each ballots}}
             {{#unless expired}}
               {{> ballots/ballot-block}}
             {{/unless}}
           {{/each}}
+          </div>
         {{else}}
-          {{> auth/usernotauthenticated-block}}
+          <div class="row">
+            <div class="col s12 center">
+              <h2>Sorry, you must be logged in to view ballots.</h2>
+              <p>{{> auth/usernotauthenticated-block}}</p>
+            </div>
+          </div>
         {{/if}}
 
-      </div>
     </div>
   </div>
 
