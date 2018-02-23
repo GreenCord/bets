@@ -51,7 +51,8 @@ module.exports = function(app) {
                 id: req.params.id
             },
             include: [
-                {model: db.User, as: 'Winner'}
+                {model: db.User, as: 'Winner'},
+                {model: db.Bet, as: 'SubmittedBet'}
             ]
         }).then(dbBallot=>{
             console.log('Getting single ballot:',dbBallot);
