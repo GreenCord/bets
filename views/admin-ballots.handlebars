@@ -3,6 +3,33 @@
 <div class="container">
 	<div class="section">
 		<div class="row">
+			<form id="create-ballot">
+				<h3>Create a New Ballot</h3>
+				<p>Name</p>
+				<input type="text" name="ballot-name" placeholder="Name of group/event">
+				<p>Expiration time and date</p>
+				<input id="datetime" name="ballot-exp" type="datetime-local">
+				<!-- BET 1 -->
+				<p>Bet 1</p>
+				<!-- text -->
+				<input type="text" name="bet-1-text" class="bet-text" placeholder="Enter true/false question for bet 1">
+
+				<!-- BET 2 -->
+				<p>Bet 2</p>
+				<!-- text -->
+				<input type="text" name="bet-2-text" class="bet-text" placeholder="Enter true/false question for bet 2">
+
+				<!-- BET 3 -->
+				<p>Bet 3</p>
+				<!-- text -->
+				<input type="text" name="bet-3-text" class="bet-text" placeholder="Enter true/false question for bet 3">
+
+				<input class="btn-large" type="submit" value="Submit" id="submit-ballot">
+				<input class="btn-large" type="reset" value="Clear">
+			</form>
+		</div>
+		<div class="row"><h3>Manage Existing Ballots</h3></div>
+		<div class="row">
 			<div class="col s6" id="active-div">
 				<h4>Active Ballots</h4>
 				{{#each ballots}}
@@ -53,4 +80,47 @@
 </div>
 {{> master/footer-block}}
 {{> master/scripts-block}}
+<script type="text/javascript">
+	// new ballot
+	$("#create-ballot").on("submit", function(event) {
+	    event.preventDefault();
+	    var newBallot = {
+	        "name": $("input[name=ballot-name]").val().trim(),
+	        "expired": "false",
+	        "expire_dt": $(".datetime").val(),
 
+	        "bet_text_1": $("input[name=bet_text_1]").val(),
+	        // "bet_answer_1": "true",
+
+	        "bet_text_2": $("input[name=bet_text_2]").val(),
+	        // "bet_answer_2": "false",
+
+	        "bet_text_3": $("input[name=bet_text_3]").val(),
+	        // "bet_answer_3": null
+	    };
+	    $.ajax("api/ballots", {
+	        type: "POST",
+	        data: newBallot
+	    }).then(
+	        function() {
+	            console.log("created new ballot");
+	            location.reload();
+	        });
+	});
+
+	$("#expire-ballot").on("click", function(event) {
+		event.preventDefault();
+		var ballotId = this.["data-ballot-id"];
+		var updateBallot = {
+			expired: true
+		};
+
+		$.ajax("api/ballots", {
+			type: "PUT",
+			data: updateBallot
+		}).then(
+			function() {
+				location.reload();
+			})
+	})
+</script>
