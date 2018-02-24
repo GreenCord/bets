@@ -1,0 +1,185 @@
+@media screen { /* Mobile first */
+
+	/* Screen styles only - separate from print styles */
+	
+	html, body {
+		font: 100%/1.5 Lato, Corbel, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+		height: 100%;
+	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.main-wrapper {
+		flex: 1 0 auto;
+		margin: 0;
+		padding: 0;
+		width: 100%;
+	}
+
+	h1, h2, h3, h4, h5, h6, label {
+		color: inherit;
+		font-family: 'Racing Sans One', Constantia, 'Palatino Linotype',Palatino, 'Times New Roman', Times, serif;
+		font-weight: 400;
+		line-height: 1.1;
+	}
+
+	a.burger-logo {
+		font-family: 'Racing Sans One', Constantia, 'Palatino Linotype',Palatino, 'Times New Roman', Times, serif;
+		font-weight: 700;
+	}
+
+	.mat-icon {
+		font-size: 72px;
+	}
+
+	.ballot-card:nth-of-type(3n+1) {
+		clear: both;
+	}
+
+	.nomargin {
+		margin: 0;
+	}
+
+	form input[type="text"], form input[type="email"], form textarea, form input[type="submit"], button {
+		color: inherit;
+		font-family: Lato, Corbel, 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+		font-size: 1rem;
+	}
+
+	button {
+		word-wrap: break-word;
+	}
+
+	p, code, blockquote {  
+		color: inherit;
+		margin: 0 0 3rem;
+	}
+
+	p, dl, dd {
+		font-size: 1rem;
+		line-height: 1.5;
+		margin-bottom: 1.5rem;
+	}
+
+	p+p, dl+dl, dd+dt, li+li { 
+		margin-top: -0.66667rem; 
+	}
+
+	p.header {
+		font-size: 2rem;
+	}
+
+	code,
+	pre {
+		font-family: 'Lucida Console', Monaco, monospace, serif;
+		font-size: 1rem;
+		line-height: 1;
+	}
+
+	blockquote {
+		font-style: italic;
+		line-height: 1.125;
+	}
+
+	blockquote:before {
+		content: "\201C";
+		display: inline-block;
+		padding-right: .4rem;
+	}
+
+
+	h1 { font-size: 2.000rem;	line-height: 1.0;	margin-bottom: 1.33333rem;	}
+	h2 { font-size: 1.625rem;	line-height: 1.1; margin-bottom: 1.08333rem;	}
+	h3 { font-size: 1.375rem;	line-height: 1.1;	margin-bottom: 0.91667rem;	}
+	h4 { font-size: 1.125rem;	line-height: 1.1;	margin-bottom: 0.75000rem; 	}
+	h5 { font-size: 1.125rem;	line-height: 1.1; margin-bottom: 0.75000rem;	}
+	h6 { font-size: 1.000rem; line-height: 1.1; margin-bottom: 0.66667rem;	}
+
+	strong, dt { font-weight: 700; }
+	em { font-style: italic; }
+	sup { 
+		font-size: 0.75rem; 
+		position: relative;
+		top: -2px; 
+		vertical-align: top; 
+	}
+
+	hr {
+		background: #0e0e0e;
+		border: 0;
+    height: 1px;
+	}
+
+	.parallax-container {
+		/*color: rgba(255,255,255,.9);*/
+		height: auto;
+		line-height: 0;
+		min-height: 380px;
+	}
+
+  .parallax-container .section {
+  	width: 100%;
+  }
+
+}
+
+@media only screen and (min-width: 480px) {
+
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+
+
+footer.page-footer {
+  margin: 0;
+}
+
+@media only screen and (min-width: 640px) {
+	h1 { font-size: 2.500rem;	line-height: 1.0;	margin-bottom: 1.66667rem;	}
+	h2 { font-size: 2.000rem;	line-height: 1.1; margin-bottom: 1.33333rem;	}
+	h3 { font-size: 1.500rem;	line-height: 1.1;	margin-bottom: 1.00000rem;	}
+}
+
+@media only screen and (min-width: 768px) {
+	
+}
+
+@media only screen and (min-width: 980px) {
+	
+}
+
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+	h1 { font-size: 3.000rem;	line-height: 1.0;	margin-bottom: 2.00000rem;	}
+	h2 { font-size: 2.250rem;	line-height: 1.1; margin-bottom: 1.50000rem;	}
+	h3 { font-size: 1.750rem;	line-height: 1.1;	margin-bottom: 1.16667rem;	}
+}
+
+@media only screen and (min-width: 1600px) {
+
+}
+
+@media only screen and (min-width: 1980px) {
+    
+}
