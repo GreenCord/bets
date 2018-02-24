@@ -18,7 +18,8 @@ $(document).ready(function(){
 					.append(
 						$('<div>')
 						.addClass('card-panel')
-						.addClass('green')
+						.addClass('brown')
+						.addClass('lighten-1')
 						.addClass('white-text')
 						.addClass('center')
 						.append($('<h3>').text(res[i].Ballot.name))
@@ -31,7 +32,7 @@ $(document).ready(function(){
 								.addClass('btn-large')
 								.addClass('white')
 								.addClass('green-text')
-								.attr('href','/ballots/'+res[i].Ballot.id)
+								.attr('href','/bets/'+res[i].Ballot.id)
 								.text('View')
 							)
 						)	
