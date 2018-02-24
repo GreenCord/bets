@@ -13,7 +13,17 @@ module.exports = function(app) {
 
     // GET rout to search for bets
     // Example: search for user 1's bets is /api/bets/search/?user_id=1
-    app.get('/api/bets/search', (req, res) => db.Bet.findAll({where: req.query}).then(dbBet => res.json(dbBet)));
+    app.get('/api/bets/search', (req, res) => {
+        db.Bet.findAll({
+            where: req.query,
+            include: [
+                {model: db.Ballot, as: 'Ballot'}
+            ]
+        }).then(dbBet =>{ 
+            console.log('###########dbBet',dbBet);
+            res.json(dbBet);
+        });
+    });
 
     app.post('/api/bets', function(req, res) {
         db.Bet.create({
