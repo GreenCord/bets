@@ -1,0 +1,56 @@
+<!-- Main Nav -->
+{{> master/nav-block}}
+<div class="container">
+	<div class="section">
+		<div class="row">
+			<div class="col s6" id="active-div">
+				<h4>Active Ballots</h4>
+				{{#each ballots}}
+					{{#if expired}}
+					{{else}}
+					<div class="card green">
+			            <div class="card-content white-text">
+			              <span class="card-title">{{this.name}}</span>
+			              <p>Question 1</p>
+			              <p>{{this.bet_text_1}}</p>
+			              <p>Question 2</p>
+			              <p>{{this.bet_text_2}}</p>
+			              <p>Question 3</p>
+			              <p>{{this.bet_text_3}}</p>
+			            </div>
+			            <div class="card-action">
+			              <button class="btn-large edit-ballot" data-ballot-id={{this.id}}>Edit Ballot</button>
+			              <button class="btn-large expire-ballot" data-ballot-id={{this.id}}>Expire Ballot</button>
+			            </div>
+	            	</div>
+					{{/if}}
+				{{/each}}
+			</div>
+			<div class="col s6">
+				<h4>Expired Bets</h4>
+				{{#each ballots}}
+				{{#if expired}}
+					<div class="card blue">
+						<div class="card-content white-text">
+							<span class="card-title">{{this.name}}</span>
+			              	<p>Question 1</p>
+			              	<p>{{this.bet_text_1}}</p>
+			              	<p>Question 2</p>
+			              	<p>{{this.bet_text_2}}</p>
+			              	<p>Question 3</p>
+			              	<p>{{this.bet_text_3}}</p>
+						</div>
+						<div class="card-action">
+			              <button class="btn-large edit-ballot" data-ballot-id={{this.id}}>Edit Ballot</button>
+			              <!-- <button class="btn-large expire-ballot" data-ballot-id={{this.id}}>Expire Ballot</button> -->
+			            </div>
+					</div>
+				{{/if}}
+				{{/each}}
+			</div>
+		</div> <!-- Row -->
+	</div>
+</div>
+{{> master/footer-block}}
+{{> master/scripts-block}}
+

@@ -71,6 +71,20 @@ module.exports = function(app) {
         res.render('ballot-submitted',hbsObject);
     });
     
+    // !!! DEBUG THIS
+    app.get('/admin', (req, res) => {
+        db.Ballot.findAll({
+            include: [
+                {model: db.Bet},
+                {model: db.User, as: 'Winner'}
+            ]
+        }).then(dbBallot=>{
+            var hbsObject = {
+                ballots: dbBallot
+            };
+            res.render("admin-ballots", hbsObject);
+        });
+    });
 
     // GET route to return all ballots
     app.get('/api/ballots', (req, res) => db.Ballot.findAll({}).then(dbBallot => res.json(dbBallot)));
