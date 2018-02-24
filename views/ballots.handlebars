@@ -13,33 +13,32 @@
 
   <!-- Main Section -->
   <div class="container">
-    <div class="section">
+
+    <div class="row">
+      <div class="col s12 m9">
 
         {{#if user}}
-          <div class="row">
-            <div class="col s12">
-              <h2>Select a ballot below.</h2>
-            </div>
+        <div class="row">
+          <div class="col s12">
+            <h2>Select a ballot below.</h2>
           </div>
-          <div class="row">
+        </div>
+        <div class="row">
           {{#each ballots}}
             {{#unless expired}}
               {{> ballots/ballot-block}}
             {{/unless}}
           {{/each}}
-          </div>
+        </div>
         {{else}}
-          <div class="row">
-            <div class="col s12 center">
-              <h2>Sorry, you must be logged in to view ballots.</h2>
-              <p>{{> auth/usernotauthenticated-block}}</p>
-            </div>
+      </div></div>
+        <div class="row">
+          <div class="col s12 center">
+            <h2>Sorry, you must be logged in to view ballots.</h2>
+            <p>{{> auth/usernotauthenticated-block}}</p>
           </div>
+        </div>
         {{/if}}
-
-    </div>
-
-  <div class="section">
 
         {{#if user}}
           <div class="row">
@@ -54,19 +53,25 @@
             {{/if}}
           {{/each}}
           </div>
-        {{else}}
-          <div class="row">
-            <div class="col s12 center">
-              <h2>Sorry, you must be logged in to view ballots.</h2>
-              <p>{{> auth/usernotauthenticated-block}}</p>
-            </div>
-          </div>
         {{/if}}
 
+      </div>
+      <div class="col s12 m3">
+        {{#if user}}
+        <div class="row">
+          <div class="col s12">
+            <h2>Your bets:</h2>
+            <div class="row" id="userbets">
+            </div>
+          </div>
+        </div>
+        {{/if}}
+      </div>
     </div>
   </div>
 
   <!-- Second Section -->
+  {{#if user}}
   <div class="parallax-container valign-wrapper">
     <div class="section no-pad-bot">
       <div class="container">
@@ -83,7 +88,9 @@
     </div><!--/.section-->
     <div class="parallax"><img src="/assets/img/phat_stacks_of_cash.jpg" alt="MAKE IT RAIN."></div>
   </div>
+  {{/if}}
 </div>
 
 {{> master/footer-block}}
 {{> master/scripts-block}}
+{{> scripts/getbets-block}}
