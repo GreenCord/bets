@@ -8,6 +8,24 @@ var db = require('../models');
 
 // Routes
 module.exports = function(app) {
+    // HBS for bets
+    app.get('/bets/:id', (req, res) => {
+        db.Bet.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [
+                {model: db.Ballot, as: 'Ballot'}
+            ]
+        }).then(dbBet =>{
+            var hbsObject = {
+                user: req.user,
+                bet: dbBet
+            };
+            res.render('bet-single',hbsObject);
+        });
+    });
+
     // GET route to return all bets
     app.get('/api/bets', (req, res) => db.Bet.findAll({}).then(dbBet => res.json(dbBet)));
 
