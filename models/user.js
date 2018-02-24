@@ -16,9 +16,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     User.associate = function(models) {
-        User.belongsToMany(models.Ballot, {
-            through: 'bets'
-        });
+        // User.belongsToMany(models.Ballot, {
+        //     through: 'bets'
+        // });
 
         User.hasMany(models.Bet, {
             onDelete: 'cascade'

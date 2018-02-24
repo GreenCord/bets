@@ -36,9 +36,9 @@ module.exports = function(sequelize, DataTypes) {
             onDelete: 'cascade'
         });
 
-        Ballot.belongsToMany(models.User, {
-            through: 'bets'
-        });
+        // Ballot.belongsToMany(models.User, {
+        //     through: 'bets'
+        // });
 
     };
 
