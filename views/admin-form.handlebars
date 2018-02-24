@@ -1,0 +1,111 @@
+<!-- Main Nav -->
+{{> master/nav-block}}
+
+<div class="main-wrapper">
+  <!-- Main Header -->
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+         <div class="card white darken-1">
+          <div class="card-content white-text">
+            <h1 class="header center green-text text-darken-4">Welcome to BetParty</h1>
+            <div class="row center grey-text">
+              <p class="header col s12 light">Let's gamble irresponsibly.</p>
+              <p>
+                {{#if user}}
+                Welcome, {{user.username}}!<br>
+                <a href="/ballots" class="waves-effect waves-light btn">Browse Ballots and Bet!</a>
+                {{else}}
+                {{> auth/usernotauthenticated-block}}
+                {{/if}}
+              </p>
+            </div>
+          </div>
+        </div>
+        <br><br>
+      </div><!--/.container-->
+    </div><!--/.section-->
+    <div class="parallax"><img src="/assets/img/benjamins.jpg" alt="All about those Benjamins."></div>
+  </div>
+
+  <!-- Main Section -->
+  <div class="container">
+    <div class="row">
+      <h1 class="header center green-text text-darken-4">Create a New Bet</h1>
+      <form>
+        <p>Name</p>
+        <input type="text" name="ballot-name" placeholder="Name of group/event">
+        <!-- BET 1 -->
+        <p>Bet 1</p>
+        <!-- text -->
+        <input type="text" name="bet-1-text" class="bet-text" placeholder="Enter true/false question for bet 1">
+
+        <!-- BET 2 -->
+        <p>Bet 2</p>
+        <!-- text -->
+        <input type="text" name="bet-2-text" class="bet-text" placeholder="Enter true/false question for bet 2">
+
+        <!-- BET 3 -->
+        <p>Bet 3</p>
+        <!-- text -->
+        <input type="text" name="bet-3-text" class="bet-text" placeholder="Enter true/false question for bet 3">
+
+        <input class="btn-large" type="submit" value="Submit" id="submit-ballot">
+      </form>
+    </div>
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center green-text"><i class="material-icons mat-icon">assignment_returned</i></h2>
+            <h5 class="center">Choose a prop bet ballot.</h5>
+            <p class="light">Login and select a ballot to bet on.</p>
+          </div>
+        </div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center green-text"><i class="material-icons mat-icon">check_circle</i></h2>
+            <h5 class="center">Place Your Bets</h5>
+            <p class="light">Answer the questions on the ballot.</p>
+            {{!-- <form id="ordersForm" action="" method="post">
+              <label for="burgerOrder">Place</label>
+              <input placeholder="What is your order?" id="burgerOrder" type="text" class="validate">
+              <button class="btn waves-effect waves-light" type="submit" id="burgerSubmit" name="action">Place Order
+                <i class="material-icons right">chevron_right</i>
+              </button>
+            </form> --}}
+          </div>
+        </div>
+        <!-- <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center green-text"><i class="material-icons mat-icon">monetization_on</i></h2>
+            <h5 class="center">Check to see if you won.</h5>
+            <p class="light">After the ballot expires, check back to see if you've won!</p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Section -->
+  <div class="parallax-container valign-wrapper">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <div class="row center">
+          <div class="col s12">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <h3 class="">Thank you for betting with BetParty!</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!--/.container-->
+    </div><!--/.section-->
+    <div class="parallax"><img src="/assets/img/phat_stacks_of_cash.jpg" alt="MAKE IT RAIN."></div>
+  </div>
+</div>
+
+{{> master/footer-block}}
+{{> master/scripts-block}}
